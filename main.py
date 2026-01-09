@@ -29,3 +29,21 @@ while True:
         chars = string.ascii_letters + string.digits
         min_length = 8
 
+    elif level == "hard":
+        chars = string.ascii_letters + string.digits + string.punctuation
+        min_length = 12
+
+    else:
+        print("❌ Invalid choice. Try again.")
+        continue
+
+    try:
+        length = int(input(f"Enter password length (min {min_length}): "))
+    except ValueError:
+        print("❌ Please enter a valid number.")
+        continue
+
+    if length < min_length:
+        print(f"❌ Password must be at least {min_length} characters.")
+        continue
+
