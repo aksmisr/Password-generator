@@ -47,3 +47,38 @@ while True:
         print(f"❌ Password must be at least {min_length} characters.")
         continue
 
+    password = []
+
+    if level == "hard":
+        password.extend([
+            random.choice(string.ascii_lowercase),
+            random.choice(string.ascii_uppercase),
+            random.choice(string.digits),
+            random.choice(string.punctuation)
+        ])
+
+    elif level == "medium":
+        password.extend([
+            random.choice(string.ascii_lowercase),
+            random.choice(string.ascii_uppercase),
+            random.choice(string.digits)
+        ])
+
+    while len(password) < length:
+        password.append(random.choice(chars))
+
+    random.shuffle(password)
+    password = "".join(password)
+
+    print("\n🔐 Generated Password:", password)
+    print("💪 Strength:", check_strength(password))
+
+    try:
+        copy = input("Copy password to clipboard? (y/n): ").lower()
+        if copy == "y":
+            pyperclip.copy(password)
+            print("✅ Password copied to clipboard!")
+    except Exception as e:
+        print(f"❌ Could not copy to clipboard: {e}")
+
+    break
