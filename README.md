@@ -11,3 +11,7 @@ Includes built-in password strength checking and clipboard copy support.
 
 ## Run
 python main.py
+
+
+## Author 
+Aakash Mishra 
